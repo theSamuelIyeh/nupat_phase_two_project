@@ -1,4 +1,5 @@
 const User = require("../models/user");
+const jwt = require("jsonwebtoken");
 
 const createUser_post = async (req, res) => {
     let gender
@@ -77,6 +78,15 @@ const allMale_get = async (req, res) => {
   }
   res.json(users);
 };
+
+
+const generateJwt = (user) => {
+    jwt.sign(user, process.env.JWT_SECRET);
+}
+
+const verifyJwt = (token) => {
+    jwt.sign(user, process.env.JWT_SECRET);
+}
 
 module.exports = {
   createUser_post,
