@@ -5,7 +5,6 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Pls enter valid name'],
     unique: [true, 'Name already exist'],
-    op
   },
   gender: {
     type: String,
