@@ -3,13 +3,13 @@ const mongoose = require("mongoose");
 const userSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: true,
-    unique: true,
+    required: [true, 'Pls enter valid name'],
+    unique: [true, 'Name already exist'],
+    op
   },
   gender: {
     type: String,
-    required: true,
-    unique: true,
+    required: [true, 'Pls enter valid gender'],
     lowercase: true,
   },
 });
