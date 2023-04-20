@@ -2,10 +2,10 @@ const User = require("../models/user");
 const jwt = require("jsonwebtoken");
 
 const createUser_post = async (req, res) => {
-    let gender
-    if (req.body.gender == 'male' || 'female') {
-        gender = req.body.gender
-    }
+  let gender;
+  if (req.body.gender == "male" || "female") {
+    gender = req.body.gender;
+  }
   const user = new User({
     name: req.body.name,
     gender: gender,
@@ -79,14 +79,20 @@ const allMale_get = async (req, res) => {
   res.json(users);
 };
 
-
 const generateJwt = (user) => {
-    jwt.sign(user, process.env.JWT_SECRET);
-}
+  jwt.sign(user, process.env.JWT_SECRET);
+};
 
-const verifyJwt = (token) => {
-    jwt.sign(user, process.env.JWT_SECRET);
-}
+const verifyJwt = (req, res, next) => {
+  const authHeader = req.headers["authorization"];
+  const token = authHeader && authHeader.split(" ")[1];
+  if (token == null) res.status(401).json({ error: "Pls input access token" });
+  jwt.verify(token, process.env.JWT_SECRET, (user, err) => {
+    if (err) return res.status(401).json({ error: "Invalid access token" });
+    req.user = user;
+    next();
+  });
+};
 
 module.exports = {
   createUser_post,
@@ -95,4 +101,5 @@ module.exports = {
   deleteUser_delete,
   allUsers_get,
   allMale_get,
+  verifyJwt,
 };
