@@ -8,13 +8,13 @@ The project is a Node Js server using the Express Js framework. It does basic CR
 
 ## Endpoints
 
-- [/ (Home page)](https://yummly-clone-nupat-teams.onrender.com) GET
-- [/create](https://yummly-clone-nupat-teams.onrender.com/create) POST
-- [/:id](https://yummly-clone-nupat-teams.onrender.com/:id) GET
-- [/:id](https://yummly-clone-nupat-teams.onrender.com/:id) PUT
-- [/:id](https://yummly-clone-nupat-teams.onrender.com/:id) DELETE
-- [/users](https://yummly-clone-nupat-teams.onrender.com/users) GET
-- [/users/male](https://yummly-clone-nupat-teams.onrender.com/users/male) GET
+- [/ (Home page)](https://yummly-clone-nupat-teams.onrender.com) GET (Gets home page)
+- [/create](https://yummly-clone-nupat-teams.onrender.com/create) POST (Create new user)
+- [/:id](https://yummly-clone-nupat-teams.onrender.com/:id) GET (Get user by id)
+- [/:id](https://yummly-clone-nupat-teams.onrender.com/:id) PUT (Update user by id)
+- [/:id](https://yummly-clone-nupat-teams.onrender.com/:id) DELETE (Delete user by id)
+- [/users](https://yummly-clone-nupat-teams.onrender.com/users) GET (Get all users)
+- [/users/male](https://yummly-clone-nupat-teams.onrender.com/users/male) GET (Get all male users)
 
 ### **Live Server Link**: <https://nupat-teams-phase-two-project.onrender.com>
 
