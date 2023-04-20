@@ -1,5 +1,8 @@
-const createUser_post = async (req, res) => {
+const User = require('../models/user');
 
+const createUser_post = async (req, res) => {
+    console.log(req.body);
+    const user = await User.create()
 }
 
 const getUser_get = async (req, res) => {
