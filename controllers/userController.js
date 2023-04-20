@@ -1,9 +1,13 @@
 const User = require("../models/user");
 
 const createUser_post = async (req, res) => {
+    let gender
+    if (req.body.gender == 'male' || 'female') {
+        gender = req.body.gender
+    }
   const user = new User({
     name: req.body.name,
-    gender: req.body.gender,
+    gender: gender,
   });
   try {
     await user.save();
