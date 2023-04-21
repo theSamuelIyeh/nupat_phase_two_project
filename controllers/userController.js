@@ -85,7 +85,9 @@ const allMale_get = async (req, res) => {
 
 const generateJwt = (user) => {
   console.log(user);
-  const token = jwt.sign({ user }, process.env.JWT_SECRET);
+  const token = jwt.sign({ user }, process.env.JWT_SECRET, {
+    expiresIn: "15s",
+  });
   console.log(token);
   return token;
 };
