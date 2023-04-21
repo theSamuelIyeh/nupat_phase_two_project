@@ -33,11 +33,15 @@ const getUser_get = async (req, res) => {
 };
 
 const updateUser_put = async (req, res) => {
+  let gender;
+  if (req.body.gender == "male" || req.body.gender == "female") {
+    gender = req.body.gender;
+  }
   let user;
   try {
     user = await User.findById(req.params.id);
     user.name = req.body.name;
-    user.gender = req.body.gender;
+    user.gender = gender;
     await user.save();
     res.status(200).json({ message: "user Updated" });
   } catch {
