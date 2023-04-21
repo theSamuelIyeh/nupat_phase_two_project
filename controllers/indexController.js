@@ -1,5 +1,6 @@
+const path = require("path");
 const index_get = (req, res) => {
-    res.sendFile(path.join(__dirname, '../public', 'index.html'));
+  res.sendFile(path.join(__dirname, "../public", "index.html"));
 };
 
-module.exports = {index_get};
+module.exports = { index_get };

@@ -8,6 +8,7 @@ const app = express();
 const userRouter = require("./routes/userRoute");
 const indexRouter = require("./routes/indexRoute");
 app.use(express.json());
+app.use(express.static(__dirname + "/public"));
 
 const mongoose = require("mongoose");
 mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true });
@@ -19,7 +20,7 @@ app.use("/api/v1/index", indexRouter);
 app.use("/api/v1", userRouter);
 
 
-app.use(express.static(__dirname + "/public"));
+
 
 const port = process.env.PORT || 3000;
 

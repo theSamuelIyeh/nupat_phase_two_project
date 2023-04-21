@@ -10,9 +10,9 @@ The project is a Node Js server using the Express Js framework. It does basic CR
 
 - [/ (Home page)](https://yummly-clone-nupat-teams.onrender.com) GET (Gets home page)
 - [/create](https://yummly-clone-nupat-teams.onrender.com/create) POST (Create new user)
-- [/:id](https://yummly-clone-nupat-teams.onrender.com/:id) GET (Get user by id)
-- [/:id](https://yummly-clone-nupat-teams.onrender.com/:id) PUT (Update user by id)
-- [/:id](https://yummly-clone-nupat-teams.onrender.com/:id) DELETE (Delete user by id)
+- [/user/:id](https://yummly-clone-nupat-teams.onrender.com/:id) GET (Get user by id)
+- [/update/:id](https://yummly-clone-nupat-teams.onrender.com/:id) PUT (Update user by id)
+- [/delete/:id](https://yummly-clone-nupat-teams.onrender.com/:id) DELETE (Delete user by id)
 - [/users](https://yummly-clone-nupat-teams.onrender.com/users) GET (Get all users)
 - [/users/male](https://yummly-clone-nupat-teams.onrender.com/users/male) GET (Get all male users)
 

@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 
 const createUser_post = async (req, res) => {
   let gender;
-  if (req.body.gender == "male" || "female") {
+  if (req.body.gender == "male" || req.body.gender == "female") {
     gender = req.body.gender;
   }
   const user = new User({
@@ -19,11 +19,15 @@ const createUser_post = async (req, res) => {
 };
 
 const getUser_get = async (req, res) => {
+  let user;
   try {
-    const user = await User.find({ _id: req.params.id });
+    user = await User.findById(req.params.id);
+    console.log(user);
     const token = generateJwt(user);
+    console.log(token);
     res.status(200).json({ user, token: token });
-  } catch {
+  } catch (err) {
+    console.log(err);
     res.json({ error: "user not found" });
   }
 };
@@ -80,15 +84,22 @@ const allMale_get = async (req, res) => {
 };
 
 const generateJwt = (user) => {
-  jwt.sign(user, process.env.JWT_SECRET);
+  console.log(user);
+  const token = jwt.sign({ user }, process.env.JWT_SECRET);
+  console.log(token);
+  return token;
 };
 
 const verifyJwt = (req, res, next) => {
   const authHeader = req.headers["authorization"];
   const token = authHeader && authHeader.split(" ")[1];
-  if (token == null) res.status(401).json({ error: "Pls input access token" });
-  jwt.verify(token, process.env.JWT_SECRET, (user, err) => {
-    if (err) return res.status(401).json({ error: "Invalid access token" });
+  if (token == null)
+    return res.status(401).json({ error: "Pls input access token" });
+  jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
+    if (err) {
+      console.log(err);
+      return res.status(401).json({ error: "Invalid access token" });
+    }
     req.user = user;
     next();
   });
